@@ -35,8 +35,12 @@ const App = () => {
         const updatedLikePosts = posts.map(posts => {
           
           if (posts.id === postId) {
-            return {...posts, likes: posts.likes+1}
+            if(posts.liked) {
+              return {...posts, likes: posts.likes-1, liked: false}
+            } else {
+              return {...posts, likes: posts.likes+1, liked: true}
           }
+        }
           return posts
         })
 
